@@ -1,4 +1,4 @@
-# irbis-consumer
+# irbis-client
 
 ## Project setup
 ```

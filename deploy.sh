@@ -21,6 +21,6 @@ git commit -m 'deploy'
 
 # if you are deploying to https://<USERNAME>.github.io/<REPO>
 # git push -f git@github.com:<USERNAME>/<REPO>.git master:gh-pages
-git push -f git@github.com:VS0x01/irbis-consumer.git master:gh-pages
+git push -f git@github.com:VS0x01/irbis-client.git master:gh-pages
 
 cd -

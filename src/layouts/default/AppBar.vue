@@ -9,6 +9,3 @@ export default {
   name: 'DefaultBar',
 };
 </script>
-
-<style>
-</style>

@@ -9,6 +9,3 @@ export default {
   name: 'DefaultFooter',
 };
 </script>
-
-<style>
-</style>

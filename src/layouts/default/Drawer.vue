@@ -12,6 +12,3 @@ export default {
   name: 'DefaultDrawer',
 };
 </script>
-
-<style>
-</style>

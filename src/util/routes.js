@@ -1,12 +1,16 @@
-export function layout(layout = 'default', children, path = '/') {
+import { kebabCase } from 'lodash'
+
+export function layout(layout = 'default', children, path = '') {
+    const dir = kebabCase(layout)
+
     return {
         path,
-        component: () => import(/* webpackChunkName: "layout-[request]" */ `@/layouts/${layout}/Index`),
+        component: () => import(/* webpackChunkName: "layout-[request]" */ `@/layouts/${dir}/Index`),
         children,
     }
 }
 
-export function route(name, path = '/', component) {
+export function route(name, path = '', component) {
     component = Object(component) === component
         ? component
         : { default: name.replace(' ', '') }

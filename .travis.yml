@@ -6,6 +6,8 @@ cache: npm
 
 script: npm run build
 
+after_script: cp dist/index.html dist/404.html
+
 deploy:
  provider: pages
  skip_cleanup: true

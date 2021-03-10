@@ -1,22 +1,22 @@
 // initial state
 const state = () => ({
-    drawer: null,
-    items: [],
-})
+  drawer: null,
+  items: [],
+});
 
 // getters
-const getters = {}
+const getters = {};
 
 // actions
-const actions = {}
+const actions = {};
 
 // mutations
-const mutations = {}
+const mutations = {};
 
 export default {
-    namespaced: true,
-    state,
-    getters,
-    actions,
-    mutations,
-}
+  namespaced: true,
+  state,
+  getters,
+  actions,
+  mutations,
+};

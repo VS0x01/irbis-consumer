@@ -21,7 +21,7 @@ export default {
       import(/* webpackChunkName: "default-drawer" */ './Drawer'),
     DefaultFooter: () =>
       import(/* webpackChunkName: "default-footer" */ './Footer'),
-    DefaultView: () => import(/* webpackChunkName: "default-view" */ './View'),
-  },
+    DefaultView: () => import(/* webpackChunkName: "default-view" */ './View')
+  }
 }
 </script>

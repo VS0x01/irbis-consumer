@@ -9,7 +9,7 @@ export function layout(layout = 'default', children, path = '') {
       import(
         /* webpackChunkName: "layout-[request]" */ `@/layouts/${dir}/Index`
       ),
-    children,
+    children
   }
 }
 
@@ -29,6 +29,6 @@ export function route(name, path = '', component) {
   return {
     name,
     path,
-    components,
+    components
   }
 }

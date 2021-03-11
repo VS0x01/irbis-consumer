@@ -9,6 +9,6 @@
 
 <script>
 export default {
-  name: 'DefaultDrawer',
+  name: 'DefaultDrawer'
 }
 </script>

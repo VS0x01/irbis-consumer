@@ -6,7 +6,7 @@ Vue.use(VueRouter)
 
 const routes = [
   layout('default', [route('Home'), route('About', '/about')]),
-  { path: '*', component: () => import('@/views/Error') },
+  { path: '*', component: () => import('@/views/Error') }
 ]
 
 const router = new VueRouter({
@@ -18,7 +18,7 @@ const router = new VueRouter({
 
     return { x: 0, y: 0 }
   },
-  routes,
+  routes
 })
 
 export default router

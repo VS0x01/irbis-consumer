@@ -1,7 +1,7 @@
 // initial state
 const state = () => ({
   drawer: null,
-  items: [],
+  items: []
 })
 
 // getters
@@ -18,5 +18,5 @@ export default {
   state,
   getters,
   actions,
-  mutations,
+  mutations
 }

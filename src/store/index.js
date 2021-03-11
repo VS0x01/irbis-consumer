@@ -1,8 +1,8 @@
-import Vue from "vue";
-import Vuex from "vuex";
-import app from "./modules/app";
+import Vue from 'vue'
+import Vuex from 'vuex'
+import app from './modules/app'
 
-Vue.use(Vuex);
+Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {},
@@ -11,4 +11,4 @@ export default new Vuex.Store({
   modules: {
     app,
   },
-});
+})

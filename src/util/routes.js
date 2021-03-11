@@ -1,7 +1,7 @@
-import { kebabCase } from "lodash";
+import { kebabCase } from 'lodash'
 
-export function layout(layout = "default", children, path = "") {
-  const dir = kebabCase(layout);
+export function layout(layout = 'default', children, path = '') {
+  const dir = kebabCase(layout)
 
   return {
     path,
@@ -10,25 +10,25 @@ export function layout(layout = "default", children, path = "") {
         /* webpackChunkName: "layout-[request]" */ `@/layouts/${dir}/Index`
       ),
     children,
-  };
+  }
 }
 
-export function route(name, path = "", component) {
+export function route(name, path = '', component) {
   component =
     Object(component) === component
       ? component
-      : { default: name.replace(" ", "") };
+      : { default: name.replace(' ', '') }
 
-  const components = {};
+  const components = {}
 
   for (const [key, value] of Object.entries(component)) {
     components[key] = () =>
-      import(/* webpackChunkName: "views-[request]" */ `@/views/${value}`);
+      import(/* webpackChunkName: "views-[request]" */ `@/views/${value}`)
   }
 
   return {
     name,
     path,
     components,
-  };
+  }
 }

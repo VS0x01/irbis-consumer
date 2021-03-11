@@ -6,6 +6,6 @@
 
 <script>
 export default {
-  name: "DefaultBar",
-};
+  name: 'DefaultBar',
+}
 </script>

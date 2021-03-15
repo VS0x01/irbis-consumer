@@ -11,7 +11,11 @@ const getters = {}
 const actions = {}
 
 // mutations
-const mutations = {}
+const mutations = {
+  toggleDrawer(state, payload) {
+    state.drawer = payload ? payload : !state.drawer
+  }
+}
 
 export default {
   namespaced: true,

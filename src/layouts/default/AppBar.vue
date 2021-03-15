@@ -5,12 +5,12 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
+
 export default {
   name: 'DefaultBar',
   methods: {
-    toggleDrawer() {
-      this.$store.commit('app/toggleDrawer')
-    }
+    ...mapMutations({ toggleDrawer: 'app/toggleDrawer' })
   }
 }
 </script>

@@ -1,7 +1,6 @@
 // initial state
 const state = () => ({
-  drawer: null,
-  items: []
+  drawer: null
 })
 
 // getters

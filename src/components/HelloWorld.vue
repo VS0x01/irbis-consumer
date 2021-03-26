@@ -1,16 +1,10 @@
 <template>
   <v-container>
-    <ol>
-      <li v-for="author in authors.authors" :key="author.mfn">
-        {{
-          author.mfn + author.fields[5]
-            ? author.fields[5].subFields[0]
-              ? author.fields[5].subFields[0].value
-              : author.fields[5].subFields[0]
-            : ''
-        }}
+    <ul>
+      <li v-for="author in authors.authors" :key="author.id">
+        {{ author.lastName + ' ' + author.firstName }}
       </li>
-    </ol>
+    </ul>
   </v-container>
 </template>
 

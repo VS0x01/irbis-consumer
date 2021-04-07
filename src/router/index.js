@@ -1,11 +1,21 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import { layout, route } from '../util/routes'
+import store from '../store'
 
 Vue.use(VueRouter)
 
 const routes = [
-  layout('default', [route('Home'), route('About', '/about')]),
+  { path: '/', name: 'Home', component: () => import('@/views/Home') },
+  layout(
+    'default',
+    [
+      route('Authors', '/authors', { default: 'AuthorsList' }),
+      { ...route('Author', '/authors/:id'), props: { default: true } },
+      route('About', '/about')
+    ],
+    '/app'
+  ),
   { path: '*', component: () => import('@/views/Error') }
 ]
 
@@ -19,6 +29,11 @@ const router = new VueRouter({
     return { x: 0, y: 0 }
   },
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  store.commit('app/pushBreadcrumbs', to)
+  next()
 })
 
 export default router

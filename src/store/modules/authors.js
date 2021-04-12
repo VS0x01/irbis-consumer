@@ -6,7 +6,11 @@ const state = () => ({
 })
 
 // getters
-const getters = {}
+const getters = {
+  getAuthorById(state) {
+    return (id) => state.authors.find((author) => author.id == id)
+  }
+}
 
 // actions
 const actions = {

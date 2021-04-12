@@ -1,9 +1,9 @@
 <template>
-  <p>{{ authors.find((author) => author.id == id) }}</p>
+  <p>{{ author(id) }}</p>
 </template>
 
 <script>
-import { mapActions, mapState } from 'vuex'
+import { mapActions, mapGetters, mapState } from 'vuex'
 
 export default {
   name: 'Author',
@@ -12,7 +12,8 @@ export default {
     await this.fetchAuthor(this.id)
   },
   computed: {
-    ...mapState('authors', ['authors'])
+    ...mapState('authors', ['authors']),
+    ...mapGetters({ author: 'authors/getAuthorById' })
   },
   methods: {
     ...mapActions({ fetchAuthor: 'authors/fetchAuthor' })

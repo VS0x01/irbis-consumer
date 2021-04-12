@@ -1,5 +1,5 @@
 <template>
-  <p>{{ author(id) }}</p>
+  <base-tree :root="author(id)" />
 </template>
 
 <script>

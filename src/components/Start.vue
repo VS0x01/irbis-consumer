@@ -1,8 +1,10 @@
 <template>
   <v-app>
-    <v-main>
-      <v-btn to="/app"> Start! </v-btn>
-    </v-main>
+    <v-container class="fill-height">
+      <v-row align="center" justify="center">
+        <v-btn to="/app"> Start! </v-btn>
+      </v-row>
+    </v-container>
   </v-app>
 </template>
 

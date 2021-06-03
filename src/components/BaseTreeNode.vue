@@ -1,10 +1,10 @@
 <template>
   <li class>
     <ul v-if="typeof node === 'object'">
-      <li v-for="key in Object.keys(node)" :key="key">
-        {{ key }} : {{ typeof node[key] !== 'object' ? node[key] : '' }}
-        <ul v-if="typeof node[key] === 'object'">
-          <base-tree-node :node="node[key]" />
+      <li v-for="(v, k) in node" :key="k">
+        {{ k }} : {{ typeof v !== 'object' ? v : '' }}
+        <ul v-if="typeof v === 'object'">
+          <base-tree-node :node="v" />
         </ul>
       </li>
     </ul>

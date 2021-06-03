@@ -13,7 +13,7 @@
 </template>
 
 <script>
-export default { name: 'ErrorView' }
+export default { name: 'Error' }
 </script>
 
 <style lang="sass">

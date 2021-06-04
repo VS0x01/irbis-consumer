@@ -1,6 +1,21 @@
 <template>
   <v-container>
-    <v-data-table :headers="headers" :items="authors" :loading="loading">
+    <v-data-table
+      :headers="headers"
+      :items="authors"
+      :loading="loading"
+      :search="search"
+    >
+      <template v-slot:top>
+        <v-text-field
+          v-model="search"
+          append-icon="mdi-magnify"
+          label="Search"
+          single-line
+          hide-details
+        />
+      </template>
+
       <template v-slot:item.id="{ item }">
         <router-link :to="'/authors/' + item.id"> View </router-link>
       </template>
@@ -20,6 +35,7 @@ export default {
   data: () => {
     return {
       loading: true,
+      search: '',
       headers: [
         { text: 'Last name', value: 'lastName' },
         { text: 'First name', value: 'firstName' },

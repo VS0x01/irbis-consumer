@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <author-card-component :author="author(id)" />
-    <works-list-component :works="works(id)" />
+    <works-list-component :works="works(id)" :loading="loadingAuthorWorks" />
   </v-container>
 </template>
 
@@ -20,6 +20,12 @@ export default {
   async created() {
     await this.fetchAuthor(this.id)
     await this.fetchWorks(this.id)
+    this.loadingAuthorWorks = false
+  },
+  data: () => {
+    return {
+      loadingAuthorWorks: true
+    }
   },
   computed: {
     ...mapGetters({

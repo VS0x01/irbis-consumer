@@ -1,7 +1,6 @@
 <template>
   <v-container>
     <v-data-table :headers="headers" :items="authors" :loading="loading">
-      <!-- eslint-disable-next-line -->
       <template v-slot:item.id="{ item }">
         <router-link :to="'/authors/' + item.id"> View </router-link>
       </template>

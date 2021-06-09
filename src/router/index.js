@@ -32,7 +32,7 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  store.commit('app/pushBreadcrumbs', to)
+  store.commit('app/pushBreadcrumbs', { router, from, to })
   next()
 })
 

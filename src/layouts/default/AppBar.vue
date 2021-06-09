@@ -1,7 +1,13 @@
 <template>
-  <v-app-bar id="default-app-bar" app>
+  <v-app-bar id="default-app-bar" color="primary" app>
     <v-app-bar-nav-icon class="hidden-md-and-up" @click.stop="toggleDrawer" />
-    <v-breadcrumbs :items="breadcrumbs"></v-breadcrumbs>
+    <v-toolbar-title>
+      Наукометричні показники науковців Університету
+    </v-toolbar-title>
+    <template v-slot:extension>
+      <!-- color: '#00AB6B' -->
+      <v-breadcrumbs :items="breadcrumbs"></v-breadcrumbs>
+    </template>
   </v-app-bar>
 </template>
 

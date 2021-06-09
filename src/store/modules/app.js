@@ -17,19 +17,17 @@ const mutations = {
   },
   pushBreadcrumbs(state, payload) {
     state.breadcrumbs = []
-    let parts = payload.path.split('/')
-    if (!parts[1]) return
-    parts[0] = 'home'
-    let paths = []
-    for (let i = parts.length - 1; i >= 0; i--) {
-      paths[i] = parts.join('/')
-      parts.pop()
-    }
-    paths.forEach((path, index) => {
-      let parts = path.split('/').slice(0)
+    const parts = payload.to.path !== '/' ? payload.to.path.split('/') : ['']
+    parts.forEach((part, index) => {
+      if (part && !isNaN(part)) parts[index] = parts[index - 1] + '/' + part
+    })
+    parts.forEach((part) => {
+      const resolved = payload.router.resolve('/' + part).resolved
       state.breadcrumbs.push({
-        text: parts[index][0].toUpperCase() + parts[index].slice(1),
-        to: '/' + path.split('/').slice(1).join('/'),
+        text:
+          resolved.name +
+          ('id' in resolved.params ? ' №' + resolved.params.id : ''),
+        to: resolved,
         exact: true
       })
     })

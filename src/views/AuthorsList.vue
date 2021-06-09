@@ -17,7 +17,7 @@
       </template>
 
       <template v-slot:item.id="{ item }">
-        <router-link :to="'/authors/' + item.id"> View </router-link>
+        <v-chip :to="'/authors/' + item.id"> View </v-chip>
       </template>
     </v-data-table>
   </v-container>

@@ -1,7 +1,7 @@
 <template>
   <v-data-table :headers="headers" :items="works" :loading="loading">
     <template v-slot:item.id="{ item }">
-      <router-link :to="'/works/' + item.id"> View </router-link>
+      <v-chip :to="'/works/' + item.id"> View </v-chip>
     </template>
   </v-data-table>
 </template>

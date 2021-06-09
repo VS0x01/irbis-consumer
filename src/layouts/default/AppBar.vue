@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar id="default-app-bar" color="primary" app>
+  <v-app-bar id="default-app-bar" color="primary" extension-height="24" app>
     <v-app-bar-nav-icon class="hidden-md-and-up" @click.stop="toggleDrawer" />
     <v-toolbar-title>
       Наукометричні показники науковців Університету
@@ -24,3 +24,9 @@ export default {
   }
 }
 </script>
+
+<style>
+.v-toolbar__extension {
+  background: #00ab6b;
+}
+</style>

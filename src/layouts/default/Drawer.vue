@@ -1,5 +1,6 @@
 <template>
   <v-navigation-drawer id="default-drawer" app v-model="drawer">
+    <v-img alt="Logo" src="@/assets/logo.png/"></v-img>
     <v-list>
       <v-list-item to="/authors">Authors</v-list-item>
       <v-list-item to="/about">About</v-list-item>
@@ -10,7 +11,6 @@
 <script>
 export default {
   name: 'DefaultDrawer',
-
   computed: {
     drawer: {
       get() {

@@ -1,7 +1,13 @@
 <template>
-  <v-data-table :headers="headers" :items="works" :loading="loading">
-    <template v-slot:item.id="{ item }">
-      <v-chip :to="'/works/' + item.id"> View </v-chip>
+  <v-data-table
+    :headers="headers"
+    :items="works"
+    :loading="loading"
+    show-expand
+    single-expand
+  >
+    <template v-slot:expanded-item="{ headers, item }">
+      <td :colspan="headers.length">{{ item }}</td>
     </template>
   </v-data-table>
 </template>
@@ -15,7 +21,7 @@ export default {
       headers: [
         { text: 'Author', value: 'authorName' },
         { text: 'Title', value: 'title' },
-        { text: '', value: 'id' }
+        { text: '', value: 'data-table-expand' }
       ]
     }
   }

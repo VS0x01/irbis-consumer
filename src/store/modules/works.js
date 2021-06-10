@@ -23,7 +23,7 @@ const actions = {
   async fetchWorksByAuthor(context, authorId) {
     let fetchedWorks = await axios.get(`/works/search?authorId=${authorId}`)
     fetchedWorks.data.forEach((work) => {
-      work.authorId = authorId
+      if (work.authorId == -1) work.authorId = authorId
       context.commit('setWork', { data: work })
     })
   }

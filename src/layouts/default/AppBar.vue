@@ -29,4 +29,8 @@ export default {
 .v-toolbar__extension {
   background: #00ab6b;
 }
+
+.v-breadcrumbs__item--active {
+  color: #e1fcde !important;
+}
 </style>

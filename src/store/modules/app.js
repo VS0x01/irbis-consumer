@@ -28,6 +28,7 @@ const mutations = {
           resolved.name +
           ('id' in resolved.params ? ' №' + resolved.params.id : ''),
         to: resolved,
+        'active-class': 'v-breadcrumbs__item--active',
         exact: true
       })
     })

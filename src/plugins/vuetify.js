@@ -12,11 +12,11 @@ const opts = {
     current: 'uk'
   },
   theme: {
+    // primary: #00AB6B; secondary: #E1FCDE
     themes: {
       light: {
         primary: '#55DE99',
-        secondary: '#FFFFFF',
-        anchor: '#000000'
+        secondary: '#FFFFFF'
       },
       dark: {
         primary: '#007B3F',

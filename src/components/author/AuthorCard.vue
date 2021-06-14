@@ -3,7 +3,7 @@
     <v-container v-if="!author">
       <v-row>
         <v-col>
-          <v-skeleton-loader type="card-heading, text" />
+          <v-skeleton-loader type="card-heading, text@3" />
         </v-col>
       </v-row>
       <v-row>
@@ -16,22 +16,33 @@
         <v-spacer />
       </v-row>
     </v-container>
-    <v-card-title v-if="author">
-      {{ author.lastName + ' ' + author.firstName }}
-    </v-card-title>
+    <div v-if="author">
+      <v-card-title>
+        {{ author.lastName + ' ' + author.firstName }}
+      </v-card-title>
 
-    <v-card-subtitle v-if="author">
-      {{ author.workPlace }}
-    </v-card-subtitle>
+      <v-card-title v-if="author.academicStatus">Вчене звання:</v-card-title>
+      <v-card-text>{{ author.academicStatus }}</v-card-text>
 
-    <v-card-title v-if="author"> Посилання: </v-card-title>
-    <v-card-text>
-      <v-chip-group v-if="author">
-        <v-chip link v-for="(v, k) in author.links" :key="k" :href="v">
-          {{ k }}
-        </v-chip>
-      </v-chip-group>
-    </v-card-text>
+      <v-card-title v-if="author.degree">Науковий ступінь:</v-card-title>
+      <v-card-text>{{ author.degree }}</v-card-text>
+
+      <v-card-title>Місце роботи:</v-card-title>
+      <v-card-text>{{ author.workPlace }}</v-card-text>
+
+      <v-card-title v-if="!!author.links.length"
+        >Сторінка науковця на сайті університету:</v-card-title
+      >
+
+      <v-card-title v-if="author.links.length > 0">Посилання:</v-card-title>
+      <v-card-text>
+        <v-chip-group>
+          <v-chip link v-for="(v, k) in author.links" :key="k" :href="v">
+            {{ k }}
+          </v-chip>
+        </v-chip-group>
+      </v-card-text>
+    </div>
   </v-card>
 </template>
 

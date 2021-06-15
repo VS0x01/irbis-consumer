@@ -5,6 +5,8 @@
       :items="authors"
       :loading="loading"
       :search="search"
+      :group-by.sync="groupBy"
+      ref="table"
     >
       <template v-slot:top>
         <v-text-field
@@ -14,7 +16,15 @@
           single-line
           hide-details
         />
+        <h2 class="text-h6 mb-2">Групування:</h2>
+        <v-chip-group v-model="groupBy">
+          <v-chip filter value="workPlace">Місце роботи</v-chip>
+        </v-chip-group>
       </template>
+
+      <!--<template v-slot:group.header="props">
+        {{ props }}
+      </template>-->
 
       <template v-slot:item.id="{ item }">
         <v-chip :to="'/authors/' + item.id"> View </v-chip>
@@ -36,6 +46,7 @@ export default {
     return {
       loading: true,
       search: '',
+      groupBy: [],
       headers: [
         { text: 'Last name', value: 'lastName' },
         { text: 'First name', value: 'firstName' },

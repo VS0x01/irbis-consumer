@@ -80,7 +80,7 @@ export default {
   methods: {
     ...mapActions({ fetchAuthors: 'authors/fetchAuthors' }),
     onGroupByUpdate(e) {
-      if (!e.length) {
+      if (e === undefined || !e.length) {
         this.itemsPerPage = this.itemsPerPagePrev
       } else {
         this.itemsPerPagePrev = this.itemsPerPage

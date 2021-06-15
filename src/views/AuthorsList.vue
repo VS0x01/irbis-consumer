@@ -1,11 +1,13 @@
 <template>
   <v-container>
     <v-data-table
-      :headers="headers"
-      :items="authors"
       :loading="loading"
       :search="search"
       :group-by.sync="groupBy"
+      @update:group-by="onGroupByUpdate"
+      :headers="headers"
+      :items="authors"
+      :items-per-page.sync="itemsPerPage"
       ref="table"
     >
       <template v-slot:top>
@@ -22,12 +24,20 @@
         </v-chip-group>
       </template>
 
-      <!--<template v-slot:group.header="props">
-        {{ props }}
-      </template>-->
+      <template v-slot:group.header="props">
+        <td :colspan="props.headers.length">
+          <v-btn class="ma-0" icon small @click="props.toggle">
+            <v-icon>{{ props.isOpen ? '$minus' : '$plus' }}</v-icon>
+          </v-btn>
+          {{ props.group }}
+          <v-btn class="ma-0" icon small @click="props.remove">
+            <v-icon>$close</v-icon>
+          </v-btn>
+        </td>
+      </template>
 
       <template v-slot:item.id="{ item }">
-        <v-chip :to="'/authors/' + item.id"> View </v-chip>
+        <v-chip :to="'/authors/' + item.id">View</v-chip>
       </template>
     </v-data-table>
   </v-container>
@@ -42,6 +52,14 @@ export default {
     await this.fetchAuthors()
     this.loading = false
   },
+  mounted() {
+    const unwatch = this.$refs.table.$watch('openCache', () => {
+      for (const key in this.$refs.table.openCache) {
+        this.$refs.table.$set(this.$refs.table.openCache, key, false)
+      }
+      unwatch()
+    })
+  },
   data: () => {
     return {
       loading: true,
@@ -51,14 +69,24 @@ export default {
         { text: 'Last name', value: 'lastName' },
         { text: 'First name', value: 'firstName' },
         { text: '', value: 'id' }
-      ]
+      ],
+      itemsPerPage: undefined,
+      itemsPerPagePrev: undefined
     }
   },
   computed: {
     ...mapState('authors', ['authors'])
   },
   methods: {
-    ...mapActions({ fetchAuthors: 'authors/fetchAuthors' })
+    ...mapActions({ fetchAuthors: 'authors/fetchAuthors' }),
+    onGroupByUpdate(e) {
+      if (!e.length) {
+        this.itemsPerPage = this.itemsPerPagePrev
+      } else {
+        this.itemsPerPagePrev = this.itemsPerPage
+        this.itemsPerPage = -1
+      }
+    }
   }
 }
 </script>

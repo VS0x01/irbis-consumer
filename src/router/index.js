@@ -10,9 +10,9 @@ const routes = [
   layout(
     'default',
     [
+      route('About', '/about'),
       route('Authors', '/authors', { default: 'AuthorsList' }),
-      { ...route('Author', '/authors/:id'), props: { default: true } },
-      route('About', '/about')
+      { ...route('Author', '/authors/:id'), props: { default: true } }
     ],
     '/app'
   ),

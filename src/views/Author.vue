@@ -1,7 +1,11 @@
 <template>
   <v-container>
     <author-card-component :author="author(id)" />
-    <works-list-component :works="works(id)" :loading="loadingAuthorWorks" />
+    <works-list-component
+      :authorId="id"
+      :works="works(id)"
+      :loading="loadingAuthorWorks"
+    />
   </v-container>
 </template>
 

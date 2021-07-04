@@ -15,9 +15,12 @@
               return accumulator + ', ' + author.lastName
             }, '')
             .slice(2) ||
-          item.content.find(
-            (currentRecord) => currentRecord.authorId == authorId
-          ).authorName
+          (() => {
+            const currentWork = item.content.find(
+              (currentRecord) => currentRecord.authorId == authorId
+            );
+            return currentWork !== undefined ? currentWork.authorName : ''
+          })()
         }}
       </td>
     </template>

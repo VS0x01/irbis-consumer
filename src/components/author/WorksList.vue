@@ -15,12 +15,7 @@
               return accumulator + ', ' + author.lastName
             }, '')
             .slice(2) ||
-          (() => {
-            const currentWork = item.content.find(
-              (currentRecord) => currentRecord.authorId == authorId
-            );
-            return currentWork !== undefined ? currentWork.authorName : ''
-          })()
+          findAuthorNameFromWorkContent(item.content)
         }}
       </td>
     </template>
@@ -47,13 +42,21 @@
 export default {
   name: 'WorksList',
   props: ['authorId', 'works', 'loading'],
-  data: () => {
+  data() {
     return {
       headers: [
         { text: 'Author(s)', value: 'authorName' },
         { text: 'Title', value: 'title' },
         { text: '', value: 'data-table-expand' }
       ]
+    }
+  },
+  methods: {
+    findAuthorNameFromWorkContent(content) {
+      const currentWork = content.find(
+        (currentRecord) => currentRecord.authorId == this.authorId
+      )
+      return currentWork !== undefined ? currentWork.authorName : ''
     }
   }
 }

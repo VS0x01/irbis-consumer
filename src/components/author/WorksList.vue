@@ -15,7 +15,7 @@
               return accumulator + ', ' + author.lastName
             }, '')
             .slice(2) ||
-          findAuthorNameFromWorkContent(item.content)
+          findCurrentWorkInContent(item.content).authorName
         }}
       </td>
     </template>
@@ -52,11 +52,11 @@ export default {
     }
   },
   methods: {
-    findAuthorNameFromWorkContent(content) {
+    findCurrentWorkInContent(content) {
       const currentWork = content.find(
         (currentRecord) => currentRecord.authorId == this.authorId
       )
-      return currentWork !== undefined ? currentWork.authorName : ''
+      return currentWork ?? ''
     }
   }
 }
